@@ -10,6 +10,10 @@ object Apps {
     const val versionName = "1.0"
 }
 
+object SigningConfigs{
+    const val Release = "Release"
+}
+
 object BuildTypes {
     const val Release = "release"
     const val Debug = "debug"

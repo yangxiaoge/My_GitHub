@@ -1,4 +1,4 @@
-package com.bruce.mygithub.ktx
+package com.bruce.mygithub.ext
 
 import android.app.Activity
 import android.content.pm.PackageManager

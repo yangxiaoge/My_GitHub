@@ -5,9 +5,9 @@ import ProductFlavors.others
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
+    kotlin("android.extensions")
 }
 
 android {
@@ -24,17 +24,35 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create(SigningConfigs.Release) {
+            storeFile = file("yangxiaoge.jks")
+            storePassword = "bruce123456"
+            keyAlias = "bruce"
+            keyPassword = "bruce123456"
+            isV1SigningEnabled = true
+            isV2SigningEnabled = true
+        }
+    }
+
     buildTypes {
         getByName(BuildTypes.Debug) {
             isMinifyEnabled = false
             applicationIdSuffix = ".${BuildTypes.Debug}"
             versionNameSuffix = ".${BuildTypes.Debug}"
             isDebuggable = true
+            signingConfig = this@android.signingConfigs.getByName(SigningConfigs.Release)
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
 
         getByName(BuildTypes.Release) {
             isMinifyEnabled = true
             isShrinkResources = true
+            isZipAlignEnabled = true
+            signingConfig = this@android.signingConfigs.getByName(SigningConfigs.Release)
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -62,8 +80,20 @@ android {
             }
     }
 
+    kapt{
+        arguments{
+            arg("room.schemaLocation","$projectDir/schemas")
+            arg("room.incremental",true)
+            arg("room.expandProjection",true)
+        }
+    }
+
     buildFeatures {
         dataBinding = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     compileOptions {
@@ -72,11 +102,6 @@ android {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

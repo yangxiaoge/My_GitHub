@@ -9,9 +9,9 @@ import com.afollestad.assent.Permission
 import com.bruce.mygithub.base.activity.BaseDataBingActivity
 import com.bruce.mygithub.constant.Settings
 import com.bruce.mygithub.databinding.ActivityWelcomeBinding
-import com.bruce.mygithub.ktx.otherwise
-import com.bruce.mygithub.ktx.runWithPermissions
-import com.bruce.mygithub.ktx.yes
+import com.bruce.mygithub.ext.otherwise
+import com.bruce.mygithub.ext.runWithPermissions
+import com.bruce.mygithub.ext.yes
 import com.bruce.mygithub.user.dao.UserDao
 import com.jaredrummler.android.widget.AnimatedSvgView
 import kotlinx.android.synthetic.main.activity_welcome.*
