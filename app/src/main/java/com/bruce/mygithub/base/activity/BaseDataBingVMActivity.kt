@@ -7,17 +7,16 @@ import androidx.databinding.ViewDataBinding
  * <pre>
  *     author: Bruce_Yang
  *     email : yangjianan@seuic.com
- *     time  : 2021/02/25
- *     desc  : 数据绑定基类
+ *     time  : 2021/02/26
+ *     desc  :带有协程基类(DataBinding + ViewModel),使用代理类完成
  * </pre>
  */
-abstract class BaseDataBingActivity<DB : ViewDataBinding> : BaseActivity() {
+abstract class BaseDataBingVMActivity<DB : ViewDataBinding> : BaseVMActivity() {
     lateinit var mDataBind: DB
-
     override fun setContentLayout() {
-        //BaseDataBingActivity需要重写，无需继承父类
-        //super.setContentLayout()
         mDataBind = DataBindingUtil.setContentView(this, getLayoutId())
+        mDataBind.lifecycleOwner = this
+        initViewModelAction()
         initView()
         initData()
     }

@@ -23,3 +23,10 @@ fun Activity.openLink(url: String) {
         startActivity(this)
     }
 }
+
+fun Activity.go2Activity(clazz:Class<*>){
+    with(Intent(this,clazz)){
+        startActivity(this)
+        finish()
+    }
+}

@@ -9,9 +9,11 @@ import com.afollestad.assent.Permission
 import com.bruce.mygithub.base.activity.BaseDataBingActivity
 import com.bruce.mygithub.constant.Settings
 import com.bruce.mygithub.databinding.ActivityWelcomeBinding
+import com.bruce.mygithub.ext.go2Activity
 import com.bruce.mygithub.ext.otherwise
 import com.bruce.mygithub.ext.runWithPermissions
 import com.bruce.mygithub.ext.yes
+import com.bruce.mygithub.user.activity.LoginActivity
 import com.bruce.mygithub.user.dao.UserDao
 import com.jaredrummler.android.widget.AnimatedSvgView
 import kotlinx.android.synthetic.main.activity_welcome.*
@@ -77,18 +79,12 @@ class WelcomeActivity : BaseDataBingActivity<ActivityWelcomeBinding>() {
             delay(500)
             val userList = userDao.getAll()
             userList.isEmpty().yes {
-//                go2Activity(LoginActivity::class.java)
+                go2Activity(LoginActivity::class.java)
             }.otherwise {
                 Settings.Account.loginUser = userList[0].login
-//                go2Activity(HomeActivity::class.java)
+                go2Activity(HomeActivity::class.java)
             }
         }
     }
 
-    private fun go2Activity(clazz: Class<*>) {
-        Intent(this@WelcomeActivity, clazz).run {
-            startActivity(this)
-            finish()
-        }
-    }
 }

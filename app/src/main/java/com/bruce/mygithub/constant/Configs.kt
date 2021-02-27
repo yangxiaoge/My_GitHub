@@ -13,13 +13,13 @@ import java.util.*
  */
 object Configs {
     //Github Base Url
-    const val GITHUB_BASE_URL = "https://github.com"
+    const val GITHUB_BASE_URL = "https://github.com/"
 
     //分页数量
     const val PAGE_SIZE = 20
 
     //开发者信息
-    const val OWNER = "bruce"
+    const val OWNER = "yangxiaoge"
     const val OWNER_REPO = "My_GitHub"
 
     //应用登陆授权

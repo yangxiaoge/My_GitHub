@@ -8,6 +8,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     kotlin("android.extensions")
+    id("kotlin-android")
 }
 
 android {
@@ -154,6 +155,7 @@ dependencies {
     implementation(Libs.afollestad)
 
     //其他三方控件
+    implementation(Libs.timber)
     implementation("de.hdodenhof:circleimageview:3.0.0")
     implementation("com.just.agentweb:agentweb:4.0.3-beta")
     implementation("com.github.bumptech.glide:glide:4.11.0")

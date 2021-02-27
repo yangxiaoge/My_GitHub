@@ -4,13 +4,14 @@ import android.app.Application
 import android.content.ContextWrapper
 import androidx.core.content.ContextCompat
 import com.bruce.mygithub.constant.Configs
-import com.bruce.mygithub.di.appModule
+import com.bruce.mygithub.di.appModules
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.tencent.bugly.crashreport.CrashReport
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import timber.log.Timber
 
 /**
  * <pre>
@@ -29,6 +30,8 @@ class MyApplication : Application() {
 
         initBugly()
 
+        initTimber()
+
         initKoin()
 
         initLiveEventBus()
@@ -41,17 +44,29 @@ class MyApplication : Application() {
         CrashReport.initCrashReport(mApplication, Configs.BUGLY_APP_ID, false)
     }
 
+    private fun initTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(object : Timber.DebugTree() {
+                override fun createStackElementTag(element: StackTraceElement): String {
+                    return super.createStackElementTag(element) + ":" + element.lineNumber
+                }
+            })
+        } /*else {
+            Timber.plant(CrashlyticsTree())
+        }*/
+    }
+
     private fun initKoin() {
         // start Koin! (https://insert-koin.io/)
         startKoin {
             // declare used Android context
             androidContext(mApplication)
             // declare modules
-            modules(appModule)
+            modules(appModules)
         }
     }
 
-    private fun initLiveEventBus(){
+    private fun initLiveEventBus() {
         LiveEventBus.get()
             .config()
             .supportBroadcast(mApplication)
@@ -59,7 +74,7 @@ class MyApplication : Application() {
             .autoClear(false)
     }
 
-    private fun initSmartRefreshLayout(){
+    private fun initSmartRefreshLayout() {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
             layout.setEnableHeaderTranslationContent(false)
             MaterialHeader(context).setColorSchemeColors(

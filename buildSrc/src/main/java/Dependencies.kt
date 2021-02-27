@@ -63,6 +63,8 @@ object Versions {
 
     const val afollestad = "2.3.1"
 
+    const val timber = "4.6.0"
+
 }
 
 object Libs {
@@ -123,6 +125,7 @@ object Libs {
 
     const val afollestad = "com.afollestad:assent:${Versions.afollestad}"
 
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 
 object TestLibs {

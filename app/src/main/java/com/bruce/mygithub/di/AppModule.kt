@@ -1,6 +1,11 @@
 package com.bruce.mygithub.di
 
 import com.bruce.mygithub.data.db.userDao
+import com.bruce.mygithub.data.http.UserService
+import com.bruce.mygithub.user.api.UserApi
+import com.bruce.mygithub.user.repository.UserRepository
+import com.bruce.mygithub.user.viewmodel.UserViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
@@ -16,20 +21,27 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     //todo
+
+    viewModel { UserViewModel(get()) }
 }
 
 val reposModule = module {
     //todo
+
+    //factory 每次注入时都重新创建一个新的对象
+    factory { UserRepository(get(), get()) }
 }
 
 val remoteModule = module {
     //todo
+    //single 单列注入
+    single<UserApi> { UserService }
 }
 
 val localModule = module {
-    //单例注入userDao
+    //单例注入userDao-用户数据访问对象
     single { userDao }
 }
 
-val appModule = listOf(viewModelModule, reposModule, remoteModule, localModule)
+val appModules = listOf(viewModelModule, reposModule, remoteModule, localModule)
 
