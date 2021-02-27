@@ -1,7 +1,6 @@
 package com.bruce.mygithub.user.activity
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import com.bruce.mygithub.HomeActivity
 import com.bruce.mygithub.R
@@ -149,7 +148,8 @@ class LoginActivity : BaseDataBingVMActivity<ActivityLoginBinding>() {
     }
 
     override fun handleError() {
-        login_btn.visibility = View.VISIBLE
+        //login_btn.visibility = View.VISIBLE
+        //github只允许oauth方式登录
         oauth_iv.visibility = View.VISIBLE
         mOAuthProgress.visibility = View.GONE
     }

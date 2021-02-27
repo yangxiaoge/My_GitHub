@@ -1,12 +1,12 @@
 package com.bruce.mygithub.data.http
 
-import android.util.Log
 import com.bruce.mygithub.BuildConfig
 import com.bruce.mygithub.user.api.UserApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -20,11 +20,10 @@ import java.util.concurrent.TimeUnit
 
 private const val BASE_URL = "https://api.github.com/"
 private const val TIMEOUT = 60L
-private const val TAG = "Retrofit"
 
 val httpLoggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
     override fun log(message: String) {
-        Log.e(TAG, message)
+        Timber.tag("OkHttp").i(message)
     }
 }).also {
     it.level = HttpLoggingInterceptor.Level.BODY

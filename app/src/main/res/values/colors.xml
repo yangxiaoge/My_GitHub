@@ -11,7 +11,6 @@
 
     <color name="colorPrimary">@color/purple_200</color>
     <color name="colorPrimaryDark">@color/purple_500</color>
-    <color name="colorAccent">#D81B60</color>
 
     <!--<color name="colorPrimary">#25292d</color>
     <color name="colorPrimaryDark">#25292d</color>

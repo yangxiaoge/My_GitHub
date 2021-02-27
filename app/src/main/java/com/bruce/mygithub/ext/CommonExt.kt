@@ -12,4 +12,4 @@ import com.bruce.mygithub.constant.Settings
  */
 
 //登录了
-fun isLogin() = !Settings.Account.token.isBlank()
+fun isLogin() = Settings.Account.token.isNotBlank()
