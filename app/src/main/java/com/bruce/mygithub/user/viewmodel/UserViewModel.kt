@@ -20,6 +20,8 @@ import com.bruce.mygithub.user.repository.UserRepository
 class UserViewModel(private val mUserRepository: UserRepository) : BaseViewModel() {
     val mUserInfoModel = MutableLiveData<UserInfoModel>()
 
+    @Deprecated("目前，我们仅支持浏览中的OAuth登录，" +
+            "因为Github将于2020年11月13日删除Authorizations API端点。")
     fun createOrGetAuthorization(): LiveData<AuthorizationRespModel> = emit {
         mUserRepository.createOrGetAuthorization(
             AuthorizationReqModel(
