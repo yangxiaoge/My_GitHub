@@ -1,7 +1,13 @@
 package com.bruce.mygithub.ext
 
-//Boolean扩展 再见了if else
-
+/**
+ * <pre>
+ *     author: Bruce_Yang
+ *     email : yangjianan@seuic.com
+ *     time  : 2021/02/24
+ *     desc  : Boolean扩展 再见了if else
+ * </pre>
+ */
 sealed class BooleanExt<out T>//巧用协变与密封类(增强版枚举)
 
 class Success<T>(val data: T) : BooleanExt<T>()//data是协变点(get方法)

@@ -2,7 +2,7 @@ package com.bruce.mygithub.user.activity
 
 import android.content.Intent
 import android.view.View
-import com.bruce.mygithub.HomeActivity
+import com.bruce.mygithub.home.activity.HomeActivity
 import com.bruce.mygithub.R
 import com.bruce.mygithub.base.activity.BaseDataBingVMActivity
 import com.bruce.mygithub.base.viewmodel.BaseViewModel
@@ -136,11 +136,11 @@ class LoginActivity : BaseDataBingVMActivity<ActivityLoginBinding>() {
             Timber.i("saveUserInfo: $this")
             Settings.Account.loginUser = this.login
             mViewModel.saveLocalUser(this)
-            go2MainActivity()
+            go2HomeActivity()
         }
     }
 
-    private fun go2MainActivity() {
+    private fun go2HomeActivity() {
         Intent(this, HomeActivity::class.java).run {
             startActivity(this)
             finish()

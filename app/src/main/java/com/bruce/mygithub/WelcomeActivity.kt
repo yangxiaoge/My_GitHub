@@ -1,6 +1,5 @@
 package com.bruce.mygithub
 
-import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.afollestad.assent.AssentResult
@@ -13,6 +12,7 @@ import com.bruce.mygithub.ext.go2Activity
 import com.bruce.mygithub.ext.otherwise
 import com.bruce.mygithub.ext.runWithPermissions
 import com.bruce.mygithub.ext.yes
+import com.bruce.mygithub.home.activity.HomeActivity
 import com.bruce.mygithub.user.activity.LoginActivity
 import com.bruce.mygithub.user.dao.UserDao
 import com.jaredrummler.android.widget.AnimatedSvgView

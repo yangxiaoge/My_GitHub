@@ -16,7 +16,7 @@ import com.bruce.mygithub.user.model.db.User
  *     author: Bruce_Yang
  *     email : yangjianan@seuic.com
  *     time  : 2021/02/26
- *     desc  :
+ *     desc  : UserRepository
  * </pre>
  */
 class UserRepository(private val mUserApi: UserApi, private val mUserDao: UserDao) {

@@ -162,6 +162,7 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.11.0")
     implementation("com.github.GrenderG:Toasty:1.4.2")
     implementation("com.github.jd-alexander:LikeButton:0.2.3")
+    //Android View根据其状态显示不同的内容
     implementation("com.github.Kennyc1012:MultiStateView:2.1.2")
     implementation("com.jaredrummler:animated-svg-view:1.0.6")
     implementation("com.jeremyliao:live-event-bus-x:1.4.4")

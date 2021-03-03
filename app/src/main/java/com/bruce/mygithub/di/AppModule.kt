@@ -2,6 +2,8 @@ package com.bruce.mygithub.di
 
 import com.bruce.mygithub.data.db.userDao
 import com.bruce.mygithub.data.http.UserService
+import com.bruce.mygithub.home.viewmodel.HomeViewModel
+import com.bruce.mygithub.home.viewmodel.ReceivedEventViewModel
 import com.bruce.mygithub.user.api.UserApi
 import com.bruce.mygithub.user.repository.UserRepository
 import com.bruce.mygithub.user.viewmodel.UserViewModel
@@ -22,6 +24,8 @@ import org.koin.dsl.module
 val viewModelModule = module {
     //todo
 
+    viewModel { HomeViewModel(get()) }
+    viewModel { ReceivedEventViewModel(get()) }
     viewModel { UserViewModel(get()) }
 }
 
